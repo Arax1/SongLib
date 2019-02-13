@@ -15,7 +15,7 @@ public class SongLibController {
 		// form arraylist
 				
 		obsList = FXCollections.observableArrayList("Song1", "Song2", "Song3", "Song4", "Song5", 
-					"Song6", "Song7", "Song8", "Song9", "Song10", "Saints");
+					"Song6", "Song7", "Song8", "Song9", "Song10", "Saints", "blah");
 		
 		listView.setItems(obsList);
 		
