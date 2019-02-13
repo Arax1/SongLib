@@ -25,4 +25,8 @@ public class Song implements Comparable<Song> {
 				return year - s.year; //this is unecessary, but just in case!
 		}
 	}
+	
+	public String toString() {
+		return name + ", by " + artist;
+	}
 }
