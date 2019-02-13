@@ -11,7 +11,9 @@ import javafx.scene.control.*;
 public class SongLib extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		
 		try {
+			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/SongLib.fxml"));
 			
@@ -20,7 +22,7 @@ public class SongLib extends Application {
 			SongLibController listController = loader.getController();
 			listController.start();
 			
-			Scene scene = new Scene(root, 455, 300);
+			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Song List");
