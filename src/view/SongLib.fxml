@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.3963210702341137" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx">
+<SplitPane dividerPositions="0.3963210702341137" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" fx:controller="view.SongLibController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <ListView layoutY="-1.0" prefHeight="400.0" prefWidth="234.0" />
+            <ListView fx:id="listView" layoutY="-1.0" prefHeight="400.0" prefWidth="234.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
