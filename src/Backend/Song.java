@@ -27,6 +27,6 @@ public class Song implements Comparable<Song> {
 	}
 	
 	public String toString() {
-		return name + ", by " + artist;
+		return name + " | " + artist + " | " + album + " | " + year;
 	}
 }
