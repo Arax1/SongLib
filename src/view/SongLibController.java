@@ -1,9 +1,13 @@
 package view;
 
+import java.util.Collections;
+
 import Backend.Song;
 import javafx.collections.*;
-import javafx.fxml.FXML;
+import javafx.event.*;
+import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SongLibController {
@@ -18,8 +22,12 @@ public class SongLibController {
 	@FXML TextField text_artist;
 	@FXML TextField text_album;
 	@FXML TextField text_year;
-		
 	
+	@FXML Text sn;
+	@FXML Text ar;
+	@FXML Text al;
+	@FXML Text y;
+		
 	private ObservableList<Song> obsList;
 
 	public void start(Stage mainStage) {
@@ -38,17 +46,55 @@ public class SongLibController {
 		listView.getSelectionModel().selectedIndexProperty().addListener((obs, oldVal, newVal) -> selectedSong(mainStage));
 		
 	}
-
+	
+	public void changeTable(ActionEvent e) {
+		
+		Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+		Button command = (Button)e.getSource();
+		int index = listView.getSelectionModel().getSelectedIndex();
+		
+		if(command == add) {
+			obsList.add(song);
+			Collections.sort(obsList);
+			
+			text_songname.clear();
+			text_artist.clear();
+			text_album.clear();
+			text_year.clear();
+			
+			deselect();
+		}
+		
+		else if(command == edit){
+			obsList.set(index, song);
+			Collections.sort(obsList);
+			
+			text_songname.clear();
+			text_artist.clear();
+			text_album.clear();
+			text_year.clear();
+		}
+		
+		else{
+			
+			obsList.remove(index);
+			deselect();
+		}
+		
+	}
+	
+	
 	private void selectedSong(Stage mainStage) {
 		
 		try {
+			
 			Song selected = obsList.get(listView.getSelectionModel().getSelectedIndex());
 			enableButtons();
 			
-			text_songname.setText(selected.name);
-			text_artist.setText(selected.artist);
-			text_album.setText(selected.album);
-			text_year.setText(Integer.toString(selected.year));
+			sn.setText("Song Name: " + selected.name);
+			ar.setText("Artist: "+ selected.artist);
+			al.setText("Album: "+ selected.album);
+			y.setText("Year: " + Integer.toString(selected.year));
 		}
 		
 		catch(IndexOutOfBoundsException e){
@@ -76,11 +122,11 @@ public class SongLibController {
 		listView.getSelectionModel().clearSelection();
 		disableButtons();
 		
-		text_songname.clear();
-		text_artist.clear();
-		text_album.clear();
-		text_year.clear();
-		
+		sn.setText("Song Name:");
+		ar.setText("Artist:");
+		al.setText("Album:");
+		y.setText("Year:");
+			
 	}
 
 }
