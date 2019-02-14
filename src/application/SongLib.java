@@ -20,7 +20,7 @@ public class SongLib extends Application {
 			SplitPane root = (SplitPane)loader.load();
 			
 			SongLibController listController = loader.getController();
-			listController.start();
+			listController.start(primaryStage);
 			
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
