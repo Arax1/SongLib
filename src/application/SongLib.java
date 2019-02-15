@@ -31,6 +31,7 @@ public class SongLib extends Application {
 			
 			root.lookupAll(".split-pane-divider").stream()
             .forEach(div ->  div.setMouseTransparent(true) );
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
