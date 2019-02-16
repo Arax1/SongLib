@@ -122,8 +122,16 @@ public class SongLibController {
 				listView.getSelectionModel().select(index);
 			}
 			
-			else
+			else {
+				
+				sn.setText("Song Name:");
+				ar.setText("Artist:");
+				al.setText("Album:");
+				y.setText("Year:");
 				disableButtons();
+			}
+				
+				
 			
 		}
 
@@ -192,7 +200,7 @@ public class SongLibController {
 		else
 			song.album = s.album;
 		
-		System.out.println("got here?");
+		//System.out.println("got here?");
 		
 		text = text_year.getText();
 		if(text.length() > 0)
