@@ -57,7 +57,6 @@ public class SongLibController {
 		int index = listView.getSelectionModel().getSelectedIndex();
 		
 		if(command == add) {
-			Song song = readSong();
 			Song song;
 			try {
 				song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
@@ -79,7 +78,14 @@ public class SongLibController {
 		}
 		
 		else if(command == edit){
-			Song song = readSong();
+			Song song;
+			try {
+				song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			}
+			
+			catch(NumberFormatException n) {
+				song = new Song(text_songname.getText(), text_artist.getText());
+			}
 			obsList.set(index, song);
 			Collections.sort(obsList);
 			
@@ -108,12 +114,22 @@ public class SongLibController {
 			
 			sn.setText("Song Name: " + selected.name);
 			ar.setText("Artist: "+ selected.artist);
-			al.setText("Album: "+ selected.album);
-			y.setText("Year: " + Integer.toString(selected.year));
+			
+			if(selected.album == null) 
+				al.setText("Album: "+ "N/A");
+			
+			else
+				al.setText("Album: "+ selected.album);
+			
+			if(selected.year == 0) 
+				y.setText("Year: "+ "N/A");
+			
+			else
+				y.setText("Year: " + Integer.toString(selected.year));
+			
 		}
 		
 		catch(IndexOutOfBoundsException e){
-			
 		}
 		
 	}
@@ -209,6 +225,7 @@ public class SongLibController {
 				al.add(song);
 			}
 			
+			s.close();
 			return al;
 			
 		} catch (Exception e) {

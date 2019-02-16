@@ -22,6 +22,8 @@ public class Song implements Comparable<Song> {
 		// TODO Auto-generated constructor stub
 		name = n;
 		artist = ar;
+		album = "N/A";
+		year = 0;
 	}
 
 	public int compareTo(Song s) {
