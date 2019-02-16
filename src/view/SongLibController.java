@@ -68,7 +68,7 @@ public class SongLibController {
 				text_album.clear();
 				text_year.clear();
 			
-				//deselect();
+				listView.getSelectionModel().select(obsList.indexOf(song));
 			}
 		}
 		
