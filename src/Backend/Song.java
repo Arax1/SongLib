@@ -4,6 +4,13 @@ public class Song implements Comparable<Song> {
 	public String name, artist, album;
 	public int year;
 	
+	public Song() {
+		name = "test";
+		artist = "dude";
+		album = "thing";
+		year = 1;
+	}
+	
 	public Song(String n, String ar, String al, int y) {
 		name = n;
 		artist = ar;
