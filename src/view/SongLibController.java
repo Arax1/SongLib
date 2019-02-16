@@ -57,7 +57,7 @@ public class SongLibController {
 		int index = listView.getSelectionModel().getSelectedIndex();
 		
 		if(command == add) {
-			Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			Song song = readSong();
 			obsList.add(song);
 			Collections.sort(obsList);
 			
@@ -70,7 +70,7 @@ public class SongLibController {
 		}
 		
 		else if(command == edit){
-			Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			Song song = readSong();
 			obsList.set(index, song);
 			Collections.sort(obsList);
 			
@@ -119,6 +119,28 @@ public class SongLibController {
 		
 		edit.setDisable(false);
 		delete.setDisable(false);	
+	}
+	
+	private Song readSong() {
+		Song song = new Song();
+		
+		String text = text_songname.getText();
+		if(text.length() > 0)
+			song.name = text;
+		
+		text = text_artist.getText();
+		if(text.length() > 0)
+			song.artist = text;	
+		
+		text = text_album.getText();
+		if(text.length() > 0)
+			song.album = text;
+		
+		text = text_year.getText();
+		if(text.length() > 0)
+			song.year = Integer.parseInt(text);
+		
+		return song;
 	}
 	
 	
