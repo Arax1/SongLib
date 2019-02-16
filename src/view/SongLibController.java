@@ -41,8 +41,10 @@ public class SongLibController {
 		// create list of items
 		// form arraylist
 				
-		Song song = new Song();
-		obsList = FXCollections.observableArrayList(song);
+		Song newsong = new Song("Jesus Walks", "Kanye West", "College Dropout", 2001);
+		Song newsong_2 = new Song("Chase Me", "Run the Jewles", "Baby Driver", 2016);
+				
+		obsList = FXCollections.observableArrayList(newsong, newsong_2);
 		
 		listView.setItems(obsList);
 		disableButtons();
@@ -61,7 +63,6 @@ public class SongLibController {
 		if(command == add) {
 			obsList.add(song);
 			Collections.sort(obsList);
-			//save("songfile.txt");
 			
 			text_songname.clear();
 			text_artist.clear();
@@ -74,7 +75,6 @@ public class SongLibController {
 		else if(command == edit){
 			obsList.set(index, song);
 			Collections.sort(obsList);
-			//save("songfile.txt");
 			
 			text_songname.clear();
 			text_artist.clear();
@@ -85,7 +85,6 @@ public class SongLibController {
 		else{
 			
 			obsList.remove(index);
-			//save("songfile.txt");
 			deselect();
 		}
 		
@@ -199,9 +198,7 @@ public class SongLibController {
 			
 		}
 		
-		ArrayList<Song> al = new ArrayList<Song>();
-		al.add(new Song());
-		return al;
+		return new ArrayList<Song>();
 	}
 
 }
