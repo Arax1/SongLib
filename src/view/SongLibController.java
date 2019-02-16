@@ -55,12 +55,14 @@ public class SongLibController {
 	}
 	
 	public void changeTable(ActionEvent e) {
-		
-		Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+	
 		Button command = (Button)e.getSource();
 		int index = listView.getSelectionModel().getSelectedIndex();
+		System.out.println("step 1");
 		
 		if(command == add) {
+			Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			
 			obsList.add(song);
 			Collections.sort(obsList);
 			
@@ -73,6 +75,8 @@ public class SongLibController {
 		}
 		
 		else if(command == edit){
+			Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			
 			obsList.set(index, song);
 			Collections.sort(obsList);
 			
@@ -82,8 +86,7 @@ public class SongLibController {
 			text_year.clear();
 		}
 		
-		else{
-			
+		else{	
 			obsList.remove(index);
 			deselect();
 		}
