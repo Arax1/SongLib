@@ -18,6 +18,12 @@ public class Song implements Comparable<Song> {
 		year = y;
 	}
 	
+	public Song(String n, String ar) {
+		// TODO Auto-generated constructor stub
+		name = n;
+		artist = ar;
+	}
+
 	public int compareTo(Song s) {
 		int ret = name.compareTo(s.name);
 		
@@ -34,6 +40,7 @@ public class Song implements Comparable<Song> {
 	}
 	
 	public String toString() {
-		return name + " | " + artist + " | " + album + " | " + year;
+		
+		return name + " | " + artist;
 	}
 }

@@ -61,7 +61,15 @@ public class SongLibController {
 		int index = listView.getSelectionModel().getSelectedIndex();
 		
 		if(command == add) {
-			Song song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			Song song;
+			try {
+				song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			}
+			
+			catch(NumberFormatException n) {
+				song = new Song(text_songname.getText(), text_artist.getText());
+			} 
+			
 			obsList.add(song);
 			Collections.sort(obsList);
 			
