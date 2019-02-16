@@ -7,7 +7,7 @@ public class Song implements Comparable<Song> {
 	public Song() {
 		name = "";
 		artist = "";
-		album = "";
+		album = "N/A";
 		year = 0;
 	}
 	
