@@ -60,14 +60,20 @@ public class SongLibController {
 			Song song = readSong();
 
 			if(song.name.length() > 0 && song.artist.length() > 0) {
-				obsList.add(song);
-				Collections.sort(obsList);
+				
+				if(!obsList.contains(song)) {
+					obsList.add(song);
+					Collections.sort(obsList);
 
-				text_songname.clear();
-				text_artist.clear();
-				text_album.clear();
-				text_year.clear();
-			
+					text_songname.clear();
+					text_artist.clear();
+					text_album.clear();
+					text_year.clear();
+				}
+				
+				else {
+					errorMessage("Song already exists!");
+				}
 			} else {
 				errorMessage("Each song needs a name and an artist!");
 			}
@@ -75,15 +81,21 @@ public class SongLibController {
 
 		else if(command == edit){
 			Song song = readSong();
-
+			
 			if(song.name.length() > 0 && song.artist.length() > 0) {
-				obsList.set(index, song);
-				Collections.sort(obsList);
-
-				text_songname.clear();
-				text_artist.clear();
-				text_album.clear();
-				text_year.clear();
+				if(!obsList.contains(song)) {
+					obsList.set(index, song);
+					Collections.sort(obsList);
+					
+					text_songname.clear();
+					text_artist.clear();
+					text_album.clear();
+					text_year.clear();
+				} 
+				
+				else {
+					errorMessage("Song already exists!");
+				}
 			} else {
 				errorMessage("Each song needs a name and an artist!");
 			}
@@ -97,7 +109,6 @@ public class SongLibController {
 
 		save("songlibrary.txt");
 	}
-
 
 	private void selectedSong(Stage mainStage) {
 
