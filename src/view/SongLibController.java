@@ -69,6 +69,8 @@ public class SongLibController {
 				text_year.clear();
 			
 				deselect();
+			} else {
+				errorMessage("Each song needs a name and an artist!");
 			}
 		}
 		
@@ -83,6 +85,8 @@ public class SongLibController {
 				text_artist.clear();
 				text_album.clear();
 				text_year.clear();
+			} else {
+				errorMessage("Each song needs a name and an artist!");
 			}
 		}
 		
@@ -159,6 +163,9 @@ public class SongLibController {
 		return song;
 	}
 	
+	private void errorMessage(String message) {
+		/* To be completed */
+	}
 	
 	// Method for when deselecting the item the user chose in the listview when you click outside the list
 	public void deselect(){
