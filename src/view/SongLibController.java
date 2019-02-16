@@ -1,19 +1,12 @@
 package view;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 import Backend.Song;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.collections.*;
+import javafx.event.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -147,58 +140,6 @@ public class SongLibController {
 		al.setText("Album:");
 		y.setText("Year:");
 			
-	}
-	
-	public void save(String filename) {
-		
-		try {
-			File f = new File(filename);
-			PrintWriter pw = new PrintWriter(f);
-			
-			pw.println(obsList.size());
-			
-			for(Song s: obsList) {
-				pw.println(s.name);
-				pw.println(s.artist);
-				pw.println(s.album);
-				pw.println(s.year);
-			}
-			
-			pw.flush();
-			pw.close();
-		} catch (Exception e) {
-			System.out.println("something went wrong?");
-		}
-	}
-	
-	public ArrayList<Song> load(String filename) {
-		try {
-			File f = new File(filename);
-			Scanner s = new Scanner(f);
-			
-			ArrayList<Song> al = new ArrayList<Song>();
-			Song song;
-			
-			int numsongs = s.nextInt();
-			s.nextLine();
-			
-			for(int x = 0; x < numsongs; x++) {
-				song = new Song();
-				song.name = s.nextLine();
-				song.artist = s.nextLine();
-				song.album = s.nextLine();
-				song.year = s.nextInt();
-				s.nextLine();
-				al.add(song);
-			}
-			
-			return al;
-			
-		} catch (Exception e) {
-			
-		}
-		
-		return new ArrayList<Song>();
 	}
 
 }
