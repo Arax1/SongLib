@@ -74,7 +74,7 @@ public class SongLibController {
 			text_album.clear();
 			text_year.clear();
 			
-			deselect();
+			//deselect();
 		}
 		
 		else if(command == edit){
