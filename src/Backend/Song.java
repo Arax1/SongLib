@@ -5,10 +5,10 @@ public class Song implements Comparable<Song> {
 	public int year;
 	
 	public Song() {
-		name = "test";
-		artist = "dude";
-		album = "thing";
-		year = 1;
+		name = "";
+		artist = "";
+		album = "N/A";
+		year = 0;
 	}
 	
 	public Song(String n, String ar, String al, int y) {

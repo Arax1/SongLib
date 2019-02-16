@@ -57,42 +57,33 @@ public class SongLibController {
 		int index = listView.getSelectionModel().getSelectedIndex();
 		
 		if(command == add) {
-			Song song;
-			try {
-				song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
+			Song song = readSong();
+			
+			if(song.name.length() > 0 && song.artist.length() > 0) {
+				obsList.add(song);
+				Collections.sort(obsList);
+			
+				text_songname.clear();
+				text_artist.clear();
+				text_album.clear();
+				text_year.clear();
+			
+				//deselect();
 			}
-			
-			catch(NumberFormatException n) {
-				song = new Song(text_songname.getText(), text_artist.getText());
-			} 
-			
-			obsList.add(song);
-			Collections.sort(obsList);
-			
-			text_songname.clear();
-			text_artist.clear();
-			text_album.clear();
-			text_year.clear();
-			
-			//deselect();
 		}
 		
 		else if(command == edit){
-			Song song;
-			try {
-				song = new Song(text_songname.getText(), text_artist.getText(), text_album.getText(), Integer.parseInt(text_year.getText()));
-			}
+			Song song = readSong();
 			
-			catch(NumberFormatException n) {
-				song = new Song(text_songname.getText(), text_artist.getText());
-			}
-			obsList.set(index, song);
-			Collections.sort(obsList);
+			if(song.name.length() > 0 && song.artist.length() > 0) {
+				obsList.set(index, song);
+				Collections.sort(obsList);
 			
-			text_songname.clear();
-			text_artist.clear();
-			text_album.clear();
-			text_year.clear();
+				text_songname.clear();
+				text_artist.clear();
+				text_album.clear();
+				text_year.clear();
+			}
 		}
 		
 		else{
@@ -144,6 +135,28 @@ public class SongLibController {
 		
 		edit.setDisable(false);
 		delete.setDisable(false);	
+	}
+	
+	private Song readSong() {
+		Song song = new Song();
+		
+		String text = text_songname.getText();
+		if(text.length() > 0)
+			song.name = text;
+		
+		text = text_artist.getText();
+		if(text.length() > 0)
+			song.artist = text;	
+		
+		text = text_album.getText();
+		if(text.length() > 0)
+			song.album = text;
+		
+		text = text_year.getText();
+		if(text.length() > 0)
+			song.year = Integer.parseInt(text);
+		
+		return song;
 	}
 	
 	
