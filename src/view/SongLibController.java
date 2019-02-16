@@ -192,7 +192,7 @@ public class SongLibController {
 		else
 			song.album = s.album;
 		
-		System.out.println("got here?");
+		//System.out.println("got here?");
 		
 		text = text_year.getText();
 		if(text.length() > 0)
