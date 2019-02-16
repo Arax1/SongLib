@@ -52,7 +52,9 @@ public class SongLibController {
 
 		//setting the listener for those items
 		listView.getSelectionModel().selectedIndexProperty().addListener((obs, oldVal, newVal) -> selectedSong(mainStage));
-
+		
+		if(obsList.size() > 0)
+			listView.getSelectionModel().select(0);
 	}
 
 	public void changeTable(ActionEvent e) {
@@ -73,6 +75,8 @@ public class SongLibController {
 					text_artist.clear();
 					text_album.clear();
 					text_year.clear();
+					
+					listView.getSelectionModel().select(obsList.indexOf(song));
 				}
 
 				else {
@@ -108,7 +112,17 @@ public class SongLibController {
 		else{
 
 			obsList.remove(index);
-			deselect();
+			if(obsList.size() > 0) {
+				
+				if(index == obsList.size()) 
+					index--;				
+				
+				listView.getSelectionModel().select(index);
+			}
+			
+			else
+				disableButtons();
+			
 		}
 
 		save("songlibrary.txt");
