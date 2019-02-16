@@ -103,19 +103,6 @@ public class SongLibController {
 		
 	}
 	
-	public boolean contains(ObservableList<Song> list, Song song){
-		
-		for(int i = 0; i < list.size(); i++) {
-			
-			if(list.get(i).name == song.name && list.get(i).artist == song.artist)
-				return true;
-		}
-		
-		return false;
-	}
-	
-	private void showAlert() {}
-	
 	private void disableButtons(){
 		
 		edit.setDisable(true);
