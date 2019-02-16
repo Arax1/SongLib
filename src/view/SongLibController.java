@@ -61,7 +61,7 @@ public class SongLibController {
 		int index = listView.getSelectionModel().getSelectedIndex();
 
 		if(command == add) {
-			Song song = readSong();
+			Song song = readSong(new Song());
 
 			if(song.name.length() > 0 && song.artist.length() > 0) {
 
@@ -84,10 +84,12 @@ public class SongLibController {
 		}
 
 		else if(command == edit){
-			Song song = readSong();
+			Song song = readSong(obsList.get(index));
 
 			if(song.name.length() > 0 && song.artist.length() > 0) {
-				if(!obsList.contains(song)) {
+				if(song.equals(obsList.get(index)) || !obsList.contains(song)) {
+					//System.out.println("valid edit!");
+					
 					obsList.set(index, song);
 					Collections.sort(obsList);
 
@@ -155,25 +157,37 @@ public class SongLibController {
 		delete.setDisable(false);
 	}
 
-	private Song readSong() {
+	private Song readSong(Song s) {
 		Song song = new Song();
-
+		
 		String text = text_songname.getText();
 		if(text.length() > 0)
 			song.name = text;
+		else
+			song.name = s.name;
 
 		text = text_artist.getText();
 		if(text.length() > 0)
 			song.artist = text;
-
+		else
+			song.artist = s.artist;
+		
 		text = text_album.getText();
 		if(text.length() > 0)
 			song.album = text;
-
+		else
+			song.album = s.album;
+		
+		System.out.println("got here?");
+		
 		text = text_year.getText();
 		if(text.length() > 0)
 			song.year = Integer.parseInt(text);
-
+		else
+			song.year = s.year;
+		
+		//System.out.println("resulted in " + song.toString() + " | " + song.album + " | " + song.year);
+		
 		return song;
 	}
 
