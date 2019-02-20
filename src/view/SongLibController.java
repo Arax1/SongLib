@@ -1,3 +1,5 @@
+//Made by Sammy Berger and Anand Raju
+
 package view;
 
 import java.io.File;
@@ -101,6 +103,8 @@ public class SongLibController {
 					text_artist.clear();
 					text_album.clear();
 					text_year.clear();
+					
+					listView.getSelectionModel().select(obsList.indexOf(song));
 				}
 
 				else {
@@ -183,18 +187,21 @@ public class SongLibController {
 		Song song = new Song();
 		
 		String text = text_songname.getText();
+		text = removeExternalSpaces(text);
 		if(text.length() > 0)
 			song.name = text;
 		else
 			song.name = s.name;
 
 		text = text_artist.getText();
+		text = removeExternalSpaces(text);
 		if(text.length() > 0)
 			song.artist = text;
 		else
 			song.artist = s.artist;
 		
 		text = text_album.getText();
+		text = removeExternalSpaces(text);
 		if(text.length() > 0)
 			song.album = text;
 		else
@@ -203,6 +210,7 @@ public class SongLibController {
 		//System.out.println("got here?");
 		
 		text = text_year.getText();
+		text = removeExternalSpaces(text);
 		if(text.length() > 0)
 			song.year = Integer.parseInt(text);
 		else
@@ -211,6 +219,30 @@ public class SongLibController {
 		//System.out.println("resulted in " + song.toString() + " | " + song.album + " | " + song.year);
 		
 		return song;
+	}
+	
+	public static String removeExternalSpaces(String s) {
+		int starting = 0, ending = 0;
+		
+		if(s.length() == 0)
+			return s;
+		
+		for(starting  = 0; starting < s.length(); starting++) {
+			if(s.charAt(starting) != ' ')
+				break;
+		}
+		
+		if(starting == s.length())
+			return "";
+		
+		for(ending = s.length(); ending > 0; ending--) {
+			if(s.charAt(ending-1) != ' ')
+				break;
+		}
+		
+		//System.out.println(s + ", [" + s.substring(starting,ending) + "]");
+		
+		return s.substring(starting, ending);
 	}
 
 	private void errorMessage(String message) {

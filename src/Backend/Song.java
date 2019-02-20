@@ -1,3 +1,5 @@
+//Made by Sammy Berger and Anand Raju
+
 package Backend;
 
 public class Song implements Comparable<Song> {
@@ -27,12 +29,12 @@ public class Song implements Comparable<Song> {
 	}
 
 	public int compareTo(Song s) {
-		int ret = name.compareTo(s.name);
+		int ret = (name.toLowerCase()).compareTo((s.name).toLowerCase());
 		
 		if(ret != 0)
 			return ret;
 		else {
-			ret = artist.compareTo(s.artist);
+			ret = (artist.toLowerCase()).compareTo((s.artist).toLowerCase());
 			
 			if(ret != 0)
 				return ret;
@@ -47,11 +49,13 @@ public class Song implements Comparable<Song> {
 		
 		Song s = (Song)o;
 		
-		return (name.equals(s.name)) && (artist.equals(s.artist));
+		return (name.toLowerCase().equals(s.name.toLowerCase())) && 
+				(artist.toLowerCase().equals(s.artist.toLowerCase()));
 	}
 	
 	public String toString() {
 		
 		return name + " | " + artist;
 	}
+
 }
