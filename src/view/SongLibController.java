@@ -135,8 +135,6 @@ public class SongLibController {
 				disableButtons();
 			}
 				
-				
-			
 		}
 
 		save("songlibrary.txt");
@@ -212,7 +210,12 @@ public class SongLibController {
 		text = text_year.getText();
 		text = removeExternalSpaces(text);
 		if(text.length() > 0)
-			song.year = Integer.parseInt(text);
+			try {
+				song.year = Integer.parseInt(text);
+			}
+			catch(NumberFormatException ne){
+				errorMessage("That's not a valid year!");
+			}
 		else
 			song.year = s.year;
 		
